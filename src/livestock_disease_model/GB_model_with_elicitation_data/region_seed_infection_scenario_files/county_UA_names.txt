@@ -1,0 +1,217 @@
+Hartlepool
+Middlesbrough
+Redcar and Cleveland
+Stockton-on-Tees
+Darlington
+Halton
+Warrington
+Blackburn with Darwen
+Blackpool
+Kingston upon Hull, City of
+East Riding of Yorkshire
+North East Lincolnshire
+North Lincolnshire
+York
+Derby = 2
+Leicester
+Rutland
+Nottingham = 2
+Herefordshire, County of
+Telford and Wrekin
+Stoke-on-Trent
+Bath and North East Somerset
+Bristol, City of
+North Somerset
+South Gloucestershire
+Plymouth
+Torbay
+Swindon
+Peterborough
+Luton = 0
+Southend-on-Sea = 0
+Thurrock
+Medway
+Bracknell Forest
+West Berkshire
+Reading = 2
+Slough = 0
+Windsor and Maidenhead
+Wokingham
+Milton Keynes
+Brighton and Hove = 0
+Portsmouth = 0
+Southampton
+Isle of Wight
+County Durham
+Cheshire East
+Cheshire West and Chester
+Shropshire
+Cornwall
+Isles of Scilly
+Wiltshire
+Bedford
+Central Bedfordshire
+Northumberland
+Bournemouth, Christchurch and Poole
+Dorset
+Buckinghamshire
+North Northamptonshire
+West Northamptonshire
+Bolton
+Bury
+Manchester
+Oldham
+Rochdale
+Salford
+Stockport
+Tameside
+Trafford
+Wigan
+Knowsley
+Liverpool = 2
+St. Helens
+Sefton
+Wirral
+Barnsley
+Doncaster
+Rotherham
+Sheffield
+Newcastle upon Tyne
+North Tyneside
+South Tyneside
+Sunderland
+Birmingham
+Coventry
+Dudley
+Sandwell = 1
+Solihull
+Walsall
+Wolverhampton = 1
+Bradford
+Calderdale
+Kirklees
+Leeds
+Wakefield
+Gateshead
+City of London = 0
+Barking and Dagenham = 1
+Barnet
+Bexley = 1
+Brent = 0
+Bromley
+Camden = 2
+Croydon = 2
+Ealing = 0
+Enfield
+Greenwich = 1
+Hackney = 0
+Hammersmith and Fulham = 0
+Haringey = 0
+Harrow
+Havering
+Hillingdon
+Hounslow
+Islington = 0
+Kensington and Chelsea = 0
+Kingston upon Thames = 0
+Lambeth = 0
+Lewisham = 0
+Merton = 1
+Newham = 1
+Redbridge = 0
+Richmond upon Thames = 1
+Southwark = 1
+Sutton = 0
+Tower Hamlets = 1
+Waltham Forest = 1
+Wandsworth = 0
+Westminster = 1
+Cambridgeshire
+Cumbria
+Derbyshire
+Devon
+East Sussex
+Essex
+Gloucestershire
+Hampshire
+Hertfordshire
+Kent
+Lancashire
+Leicestershire
+Lincolnshire
+Norfolk
+North Yorkshire
+Nottinghamshire
+Oxfordshire
+Somerset
+Staffordshire
+Suffolk
+Surrey
+Warwickshire
+West Sussex
+Worcestershire
+Antrim and Newtownabbey
+Armagh City, Banbridge and Craigavon
+Belfast
+Causeway Coast and Glens
+Derry City and Strabane
+Fermanagh and Omagh
+Lisburn and Castlereagh
+Mid and East Antrim
+Mid Ulster
+Newry, Mourne and Down
+Ards and North Down
+Clackmannanshire
+Dumfries and Galloway
+East Ayrshire
+East Lothian
+East Renfrewshire
+Na h-Eileanan Siar
+Falkirk
+Highland
+Inverclyde
+Midlothian
+Moray
+North Ayrshire
+Orkney Islands
+Scottish Borders
+Shetland Islands
+South Ayrshire
+South Lanarkshire
+Stirling
+Aberdeen City
+Aberdeenshire
+Argyll and Bute
+City of Edinburgh
+Renfrewshire
+West Dunbartonshire
+West Lothian
+Angus
+Dundee City = 0
+East Dunbartonshire
+Fife
+Perth and Kinross
+Glasgow City
+North Lanarkshire
+Isle of Anglesey
+Gwynedd
+Conwy
+Denbighshire
+Flintshire
+Wrexham
+Ceredigion
+Pembrokeshire
+Carmarthenshire
+Swansea
+Neath Port Talbot
+Bridgend
+Vale of Glamorgan
+Cardiff
+Rhondda Cynon Taf
+Caerphilly
+Blaenau Gwent
+Torfaen
+Monmouthshire
+Newport
+Powys
+Merthyr Tydfil
