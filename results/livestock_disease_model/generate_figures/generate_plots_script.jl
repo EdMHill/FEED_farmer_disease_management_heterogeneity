@@ -69,8 +69,8 @@ INTERVIEW DATA: HERD SIZE & BEHAVIOURAL CLUSTER GROUPED BAR PLOT (FIGURE YYY)
 
 # Set up the data array
 behavioural_group_propns_by_herd_size_empirical_estimates =
-        [0.52  0.66  0.20  0.00  0.00;
-         0.48  0.29  0.47  0.50  0.00;
+        [0.52  0.67  0.20  0.00  0.00;
+         0.48  0.28  0.47  0.50  0.00;
          0.00  0.05  0.33  0.50  1.00]'
          # For the plot, group of bars per row (herd size group),
          # behavioural group by column
