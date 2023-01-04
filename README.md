@@ -19,19 +19,27 @@ Please find below an explainer of the directory structure within this repository
 
 ### data
 
+**datavis**  
+Visualisations of interview data
+
 **dummy_data**  
 Directory containing synthetic data on livestock counts and premises location data.
 
-**Shapefiles**  
+**elicitation_interviews**  
+The file *cluster_assignment_five_variable_model_with_herd_size.csv* has the herd sizes and behavioural cluster assignment for the five variable statistical model.
+
+**shapefiles**  
 County and country boundary shapefiles for UK. Source: Office for National Statistics licensed under the Open Government Licence v.3.0. Contains OS data © Crown copyright and database right 2022.
 
 * Counties and Unitary Authorities (December 2020) UK BGC dataset: https://www.arcgis.com/home/item.html?id=aff50e8d15364a7b82c62c14861eb240
 
 ### results
-Directories to store simulation outputs.
 
-#### livestock_disease_model
-The main lotting scripts is generate_plots_script.jl
+#### livestock_disease_model/GB_model_with_behaviour_groups_grid_simn_outputs
+Directories to store simulation outputs from the livestock disease model.
+
+#### livestock_disease_model/generate_figures
+The main plotting scripts is generate_plots_script.jl
 
 **bar_plots**  
 Directory for bar plots
@@ -44,6 +52,9 @@ Directory for spatial maps
 
 **violin_plots**  
 Directory for violin plots
+
+#### livestock_disease_model/table_summ_stats
+The script generate_table_summ_stats_script.jl computes the statistics for the results tables associated with the analysis carried out using the livestock disease model.
 
 ### src
 
