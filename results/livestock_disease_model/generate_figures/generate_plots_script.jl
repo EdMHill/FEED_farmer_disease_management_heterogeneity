@@ -132,8 +132,8 @@ IMPORT RESULTS DATA
 ========================#
 
 # Set up filename prefixes
-behav_group_config_disease_state_filename = "../GB_model_epi_outputs_aggregated/holdings_per_disease_state_"
-behav_group_config_outbreak_duration_filename = "../GB_model_epi_outputs_aggregated/outbreak_duration_"
+behav_group_config_disease_state_filename = "../GB_model_with_behaviour_groups_grid_simn_outputs/GB_model_epi_outputs_aggregated/holdings_per_disease_state_"
+behav_group_config_outbreak_duration_filename = "../GB_model_with_behaviour_groups_grid_simn_outputs/GB_model_epi_outputs_aggregated/outbreak_duration_"
 
 # Set up array construction variables
 n_simn_replicates = 500

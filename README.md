@@ -39,7 +39,7 @@ County and country boundary shapefiles for UK. Source: Office for National Stati
 Directories to store simulation outputs from the livestock disease model.
 
 #### livestock_disease_model/generate_figures
-The main plotting scripts is generate_plots_script.jl
+The main plotting script is generate_plots_script.jl, which calls functions in generate_plots_supporting_fns.jl. compute_intervention_cost_stats.jl generates the threshold intervention costs.
 
 **bar_plots**  
 Directory for bar plots

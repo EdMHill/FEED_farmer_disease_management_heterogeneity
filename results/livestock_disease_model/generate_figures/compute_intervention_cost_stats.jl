@@ -48,17 +48,17 @@ for behav_group_scenario_ID = 1:(n_behav_group_configs-1) # Final behavioural gr
         batchID_val = batch_ID_offset_vec[behav_group_scenario_ID] + seed_region_ID
 
         # Infection count for all replicates
-        infected_count_array[:,seed_region_ID,behav_group_scenario_ID] = readdlm("../GB_model_epi_outputs_aggregated/cumulative_culled_batchID$(batchID_val).txt")
+        infected_count_array[:,seed_region_ID,behav_group_scenario_ID] = readdlm("../GB_model_with_behaviour_groups_grid_simn_outputs/GB_model_epi_outputs_aggregated/cumulative_culled_batchID$(batchID_val).txt")
 
         # Vaccination count for all replicates
-        vacc_count_array[:,seed_region_ID,behav_group_scenario_ID] = readdlm("../GB_model_epi_outputs_aggregated/cumulative_vacc_batchID$(batchID_val).txt")
+        vacc_count_array[:,seed_region_ID,behav_group_scenario_ID] = readdlm("../GB_model_with_behaviour_groups_grid_simn_outputs/GB_model_epi_outputs_aggregated/cumulative_vacc_batchID$(batchID_val).txt")
     end
 end
 
-# behav_group_scenario_ID == n_behav_group_configs
-# Corresponds to scenario where all holdings enact both controls, meaning there is no outbreak
-infected_count_array[:,:,n_behav_group_configs] = zeros(Int64,n_replicates,n_seed_region_scenarios)
+# Corresponds to scenario where all holdings enact control, meaning there is no outbreak
+n_livestock = 7478327
 vacc_count_array[:,:,n_behav_group_configs] = n_livestock.*ones(Int64,n_replicates,n_seed_region_scenarios)
+infected_count_array[:,:,n_behav_group_configs] = zeros(Int64,n_replicates,n_seed_region_scenarios)
 
 #========================
 INITIALISE COMPARATOR VARIABLES & ARRAYS

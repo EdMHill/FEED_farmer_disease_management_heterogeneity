@@ -260,7 +260,7 @@ function plot_violin_figs_fn(input_event_array::Union{Array{Float64,2},Array{Int
     end
 
     # Add median point
-    scatter!(p_violins, x_vals, median_vals, markersize=2, color=:red)
+    scatter!(p_violins, x_vals, vec(median(input_event_array,dims=1)), markersize=2, color=:red)
 
     # Add divider lines to separate out configs that are varying similar attributes
     line_divide_x_vals = [2; 6; 9]
