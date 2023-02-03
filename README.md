@@ -27,6 +27,7 @@ Directory containing synthetic data on livestock counts and premises location da
 
  - **elicitation_interviews**  
 The file *cluster_assignment_five_variable_model_with_herd_size.csv* has the herd sizes and behavioural cluster assignment for the five variable statistical model.
+
 The file *elicitation_interview_data.csv* has the farmer-level behaviour and psychosocial score data from the elicitation interviews that was analysed for the associated paper.
 
  - **shapefiles**  
