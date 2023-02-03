@@ -27,11 +27,14 @@ Directory containing synthetic data on livestock counts and premises location da
 
  - **elicitation_interviews**  
 The file *cluster_assignment_five_variable_model_with_herd_size.csv* has the herd sizes and behavioural cluster assignment for the five variable statistical model.
+The file *elicitation_interview_data.csv* has the farmer-level behaviour and psychosocial score data from the elicitation interviews that was analysed for the associated paper.
 
  - **shapefiles**  
 County and country boundary shapefiles for UK. Source: Office for National Statistics licensed under the Open Government Licence v.3.0. Contains OS data © Crown copyright and database right 2022. Counties and Unitary Authorities (December 2020) UK BGC dataset: https://www.arcgis.com/home/item.html?id=aff50e8d15364a7b82c62c14861eb240
 
 ### results
+
+The file *elicitation_interview_analysis_script.R* contains the R code for analysis of the farmer elicitation interview data for the results presented in the paper and fed into the livestock disease model. 
 
 #### livestock_disease_model/GB_model_with_behaviour_groups_grid_simn_outputs
 Directories to store simulation outputs from the livestock disease model.
