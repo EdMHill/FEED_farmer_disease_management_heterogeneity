@@ -2,7 +2,7 @@
 
 This repository contains files for the analysis presented in the scientific paper "Incorporating heterogeneity in farmer disease control behaviour into a livestock disease transmission model" by Edward M. Hill, Naomi S. Prosser, Paul Brown, Eamonn Ferguson, Jasmeet Kaler, Martin J. Green, Matt J. Keeling and Michael J. Tildesley.
 
-Preprint details: EM Hill, NS Prosser, P Brown, E Ferguson, MJ Green, J Kaler, MJ Keeling, MJ Tildesley. (2023) Incorporating heterogeneity in farmer disease control behaviour into a livestock disease transmission model. agriRxiv. doi: 10.21203/rs.3.rs-2547595/v1. URL: https://doi.org/10.21203/rs.3.rs-2547595/v1
+Preprint details: EM Hill, NS Prosser, P Brown, E Ferguson, MJ Green, J Kaler, MJ Keeling, MJ Tildesley. (2023) Incorporating heterogeneity in farmer disease control behaviour into a livestock disease transmission model. Research Square. doi: 10.21203/rs.3.rs-2547595/v1. URL: https://doi.org/10.21203/rs.3.rs-2547595/v1
 
 [![DOI](https://zenodo.org/badge/584841376.svg)](https://zenodo.org/badge/latestdoi/584841376)
 
