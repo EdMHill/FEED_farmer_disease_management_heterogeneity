@@ -237,12 +237,7 @@ y_axis_label_vec = ["Number of holdings infected";
 y_lim_max_val = [6.1e4;
                  103.;
                  500.;
-                 12.]
-
-y_lim_vals = [ (0. , 6.1e4),
-               (0. , 103.),
-               (0. , 500.),
-               (0. , 12.) ]
+                 4.]
 
 # Set up save filenames
 violin_plot_save_filename_vec = ["violin_plots/500_replicate_runs/total_infected_violin_plot";

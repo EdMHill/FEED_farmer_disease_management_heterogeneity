@@ -243,6 +243,7 @@ function plot_violin_figs_fn(input_event_array::Union{Array{Float64,2},Array{Int
         input_event_array[:, 1],
         xlabel="Behavioural configuration",
         xticks=(x_vals, config_xtick_label),
+        xlimits=(0.5,maximum(x_vals)+0.5),
         xrotation=30,
         ylabel=y_axis_label,
         formatter=:plain,
