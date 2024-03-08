@@ -164,27 +164,65 @@ function sq_distance_between_cells(cell_A_xMin::Float64, cell_A_xMax::Float64,
                                     cell_B_xMin::Float64, cell_B_xMax::Float64,
                                     cell_B_yMin::Float64, cell_B_yMax::Float64)
 
-    #Get shortest horizontal distance between cells A & B
-    #Ensure all distances are positive, use absolute value fn
-    distances_x = abs.([cell_A_xMin - cell_B_xMin,  #cell_A.xVal_min - cell_B.xVal_min
+    #If an edge of cell_B overlaps with an edge in cell_A, the two points
+    #between which the shortest distance is found is on a straight horizontal or
+    #vertical line.
+
+    #Otherwise calculate the euclidean distance.
+
+    if ( ((cell_A_yMin >= cell_B_yMin) && (cell_A_yMax <= cell_B_yMax)) || ((cell_B_yMin >= cell_A_yMin) && (cell_B_yMax <= cell_A_yMax)) )
+        #Check for horizontal alignment first. i.e. Shortest distance is found on a straight horizontal line
+
+        #Get shortest horizontal distance between cells A & B
+        distances_x = abs.([cell_A_xMin - cell_B_xMin,
+                            cell_A_xMin - cell_B_xMax,
+                            cell_A_xMax - cell_B_xMin,
+                            cell_A_xMax - cell_B_xMax])
+
+        delta_x::Float64 = minimum(distances_x)
+
+        return (delta_x*delta_x)::Float64
+
+    elseif ( ((cell_A_xMin >= cell_B_xMin) && (cell_A_xMax <= cell_B_xMax)) || ((cell_B_xMin >= cell_A_xMin) && (cell_B_xMax <= cell_A_xMax)) )
+        #Check for vertical alignment. i.e. Shortest distance is found on a straight vertical line
+
+        #Get shortest vertical distance between cells A & B
+        distances_y = abs.([cell_A_yMin - cell_B_yMin,
+                            cell_A_yMin - cell_B_yMax,
+                            cell_A_yMax - cell_B_yMin,
+                            cell_A_yMax - cell_B_yMax])
+
+        delta_y::Float64 = minimum(distances_y)    
+
+        return (delta_y*delta_y)::Float64
+
+    else
+        ##No vertical or horizontal overlap, calculate euclidean distance
+
+
+        #Get shortest horizontal distance between cells A & B
+        #Ensure all distances are positive, use absolute value fn
+        distances_x = abs.([cell_A_xMin - cell_B_xMin,  #cell_A.xVal_min - cell_B.xVal_min
                             cell_A_xMin - cell_B_xMax,  #cell_A.xVal_min - cell_B.xVal_max
                             cell_A_xMax - cell_B_xMin,  #cell_A.xVal_max - cell_B.xVal_min
                             cell_A_xMax - cell_B_xMax])  #cell_A.xVal_max - cell_B.xVal_max
 
-    delta_x::Float64 = minimum(distances_x)
+        delta_x::Float64 = minimum(distances_x)
 
-    #Get shortest vertical distance between cells A & B
-    #Ensure all distances are positive, use absolute value fn
-    distances_y = abs.([cell_A_yMin - cell_B_yMin,  #cell_A.yVal_min - cell_B.yVal_min
+        #Get shortest vertical distance between cells A & B
+        #Ensure all distances are positive, use absolute value fn
+        distances_y = abs.([cell_A_yMin - cell_B_yMin,  #cell_A.yVal_min - cell_B.yVal_min
                             cell_A_yMin - cell_B_yMax,  #cell_A.yVal_min - cell_B.yVal_max
                             cell_A_yMax - cell_B_yMin,  #cell_A.yVal_max - cell_B.yVal_min
                             cell_A_yMax - cell_B_yMax])  #cell_A.yVal_max - cell_B.yVal_max
 
-    delta_y::Float64 = minimum(distances_y)
+        delta_y::Float64 = minimum(distances_y)
 
-    return (delta_x*delta_x + delta_y*delta_y)::Float64
-    #return (delta_x^2 + delta_y^2)::Float64
+        return (delta_x*delta_x + delta_y*delta_y)::Float64
+    end
+
 end
+
 
 """
     sq_distance_between_cells_convert_to_km(cell_A_xMin::Float64, cell_A_xMax::Float64,
@@ -350,65 +388,157 @@ function great_circle_distance_between_cells(cell_A_xMin::Float64, cell_A_xMax::
                                             cell_B_xMin::Float64, cell_B_xMax::Float64,
                                             cell_B_yMin::Float64, cell_B_yMax::Float64)
 
-    #Get shortest horizontal distance between cells A & B
-    #Ensure all distances are positive, use absolute value fn
-    cell_distances_x = abs.([cell_A_xMin - cell_B_xMin,  #cell_A.xVal_min - cell_B.xVal_min
-                            cell_A_xMin - cell_B_xMax,  #cell_A.xVal_min - cell_B.xVal_max
-                            cell_A_xMax - cell_B_xMin,  #cell_A.xVal_max - cell_B.xVal_min
-                            cell_A_xMax - cell_B_xMax])  #cell_A.xVal_max - cell_B.xVal_max
+    if ( ((cell_A_yMin >= cell_B_yMin) && (cell_A_yMax <= cell_B_yMax)) || ((cell_B_yMin >= cell_A_yMin) && (cell_B_yMax <= cell_A_yMax)) )
+        #Check for horizontal alignment first. i.e. Shortest distance is found on a constant latitude line
 
-    min_grid_dist_x_idx::Int64 = findmin(cell_distances_x)[2] #Second entry, index of the minimum over the given dimensions.
+        #Get shortest horizontal distance between cells A & B
+        cell_distances_x = abs.([cell_A_xMin - cell_B_xMin,
+                                cell_A_xMin - cell_B_xMax,
+                                cell_A_xMax - cell_B_xMin,
+                                cell_A_xMax - cell_B_xMax])
 
-    #Will take value 1, 2, 3 or 4. Throw error if another value
-    #Lookup table based on index value obtained
-    #Assign longitude coords
-    if min_grid_dist_x_idx == 1 #cell_A min, cell_B min
-        lon1 = cell_A_xMin
-        lon2 = cell_B_xMin
-    elseif min_grid_dist_x_idx == 2 #cell_A min, cell_B max
-        lon1 = cell_A_xMin
-        lon2 = cell_B_xMax
-    elseif min_grid_dist_x_idx == 3 #cell_A max, cell_B min
-        lon1 = cell_A_xMax
-        lon2 = cell_B_xMin
-    elseif min_grid_dist_x_idx == 4 #cell_A max, cell_B max
-        lon1 = cell_A_xMax
-        lon2 = cell_B_xMax
-    else #Unexpected value for min_grid_dist_x_idx, throw error
-        error("min_grid_dist_x_idx has value $min_grid_dist_x_idx. min_grid_dist_x_idx must have value 1, 2, 3 or 4.")
+        min_grid_dist_x_idx::Int64 = findmin(cell_distances_x)[2] #Second entry, index of the minimum over the given dimensions.
+
+        #Will take value 1, 2, 3 or 4. Throw error if another value
+        #Lookup table based on index value obtained
+        #Assign longitude coords
+        if min_grid_dist_x_idx == 1 #cell_A min, cell_B min
+            lon1 = cell_A_xMin
+            lon2 = cell_B_xMin
+        elseif min_grid_dist_x_idx == 2 #cell_A min, cell_B max
+            lon1 = cell_A_xMin
+            lon2 = cell_B_xMax
+        elseif min_grid_dist_x_idx == 3 #cell_A max, cell_B min
+            lon1 = cell_A_xMax
+            lon2 = cell_B_xMin
+        elseif min_grid_dist_x_idx == 4 #cell_A max, cell_B max
+            lon1 = cell_A_xMax
+            lon2 = cell_B_xMax
+        else #Unexpected value for min_grid_dist_x_idx, throw error
+            error("min_grid_dist_x_idx has value $min_grid_dist_x_idx. min_grid_dist_x_idx must have value 1, 2, 3 or 4.")
+        end
+
+        #Get latitude midpoint of smaller grid cell
+        if ( ((cell_A_yMin >= cell_B_yMin) && (cell_A_yMax <= cell_B_yMax)) 
+            #Cell A is vertically within top and bottom boundaries of cell B
+            lat1 = (cell_A_yMin + cell_A_yMax)/2
+            lat2 = (cell_A_yMin + cell_A_yMax)/2
+        else
+            #Cell B is vertically within top and bottom boundaries of cell A
+            lat1 = (cell_B_yMin + cell_B_yMax)/2
+            lat2 = (cell_B_yMin + cell_B_yMax)/2
+        end
+
+        #Return great circle distance
+        return (great_circle_distance(lat1, lon1, lat2, lon2))::Float64
+
+    elseif ( ((cell_A_xMin >= cell_B_xMin) && (cell_A_xMax <= cell_B_xMax)) || ((cell_B_xMin >= cell_A_xMin) && (cell_B_xMax <= cell_A_xMax)) )
+        #Check for vertical alignment. i.e. Shortest distance is found on a constant longitude line
+
+        #Get shortest vertical distance between cells A & B
+        cell_distances_y = abs.([cell_A_yMin - cell_B_yMin,
+                                cell_A_yMin - cell_B_yMax,
+                                cell_A_yMax - cell_B_yMin,
+                                cell_A_yMax - cell_B_yMax])
+
+        min_grid_dist_y_idx = findmin(cell_distances_y)[2] #Second entry, index of the minimum over the given dimensions.
+
+        #Will take value 1, 2, 3 or 4. Throw error if another value
+        #Lookup table based on index value obtained
+        #Assign latitude coords
+        if min_grid_dist_y_idx == 1 #cell_A min, cell_B min
+            lat1 = cell_A_yMin
+            lat2 = cell_B_yMin
+        elseif min_grid_dist_y_idx == 2 #cell_A min, cell_B max
+            lat1 = cell_A_yMin
+            lat2 = cell_B_yMax
+        elseif min_grid_dist_y_idx == 3 #cell_A max, cell_B min
+            lat1 = cell_A_yMax
+            lat2 = cell_B_yMin
+        elseif min_grid_dist_y_idx == 4 #cell_A max, cell_B max
+            lat1 = cell_A_yMax
+            lat2 = cell_B_yMax
+        else #Unexpected value for min_grid_dist_x_idx, throw error
+            error("min_grid_dist_y_idx has value $min_grid_dist_y_idx. min_grid_dist_y_idx must have value 1, 2, 3 or 4.")
+        end
+
+        #Get longitude midpoint of smaller grid cell
+        if ( ((cell_A_xMin >= cell_B_xMin) && (cell_A_xMax <= cell_B_xMax)) 
+            #Cell A is horizontally within left and right boundaries of cell B
+            lon1 = (cell_A_xMin + cell_A_xMax)/2
+            lon2 = (cell_A_xMin + cell_A_xMax)/2
+        else
+            #Cell B is horizontally within left and right boundaries of cell A
+            lon1 = (cell_B_xMin + cell_B_xMax)/2
+            lon2 = (cell_B_xMin + cell_B_xMax)/2
+        end
+
+        #Return great circle distance
+        return (great_circle_distance(lat1, lon1, lat2, lon2))::Float64
+
+    else
+    ##No vertical or horizontal overlap, calculate great circle distance
+
+        #Get shortest horizontal distance between cells A & B
+        #Ensure all distances are positive, use absolute value fn
+        cell_distances_x = abs.([cell_A_xMin - cell_B_xMin,
+                                cell_A_xMin - cell_B_xMax,
+                                cell_A_xMax - cell_B_xMin,
+                                cell_A_xMax - cell_B_xMax])
+
+        min_grid_dist_x_idx = findmin(cell_distances_x)[2] #Second entry, index of the minimum over the given dimensions.
+
+        #Will take value 1, 2, 3 or 4. Throw error if another value
+        #Lookup table based on index value obtained
+        #Assign longitude coords
+        if min_grid_dist_x_idx == 1 #cell_A min, cell_B min
+            lon1 = cell_A_xMin
+            lon2 = cell_B_xMin
+        elseif min_grid_dist_x_idx == 2 #cell_A min, cell_B max
+            lon1 = cell_A_xMin
+            lon2 = cell_B_xMax
+        elseif min_grid_dist_x_idx == 3 #cell_A max, cell_B min
+            lon1 = cell_A_xMax
+            lon2 = cell_B_xMin
+        elseif min_grid_dist_x_idx == 4 #cell_A max, cell_B max
+            lon1 = cell_A_xMax
+            lon2 = cell_B_xMax
+        else #Unexpected value for min_grid_dist_x_idx, throw error
+            error("min_grid_dist_x_idx has value $min_grid_dist_x_idx. min_grid_dist_x_idx must have value 1, 2, 3 or 4.")
+        end
+
+
+        #Get shortest vertical distance between cells A & B
+        #Ensure all distances are positive, use absolute value fn
+        cell_distances_y = abs.([cell_A_yMin - cell_B_yMin,
+                                cell_A_yMin - cell_B_yMax,
+                                cell_A_yMax - cell_B_yMin,
+                                cell_A_yMax - cell_B_yMax])
+
+        min_grid_dist_y_idx = findmin(cell_distances_y)[2] #Second entry, index of the minimum over the given dimensions.
+
+        #Will take value 1, 2, 3 or 4. Throw error if another value
+        #Lookup table based on index value obtained
+        #Assign latitude coords
+        if min_grid_dist_y_idx == 1 #cell_A min, cell_B min
+            lat1 = cell_A_yMin
+            lat2 = cell_B_yMin
+        elseif min_grid_dist_y_idx == 2 #cell_A min, cell_B max
+            lat1 = cell_A_yMin
+            lat2 = cell_B_yMax
+        elseif min_grid_dist_y_idx == 3 #cell_A max, cell_B min
+            lat1 = cell_A_yMax
+            lat2 = cell_B_yMin
+        elseif min_grid_dist_y_idx == 4 #cell_A max, cell_B max
+            lat1 = cell_A_yMax
+            lat2 = cell_B_yMax
+        else #Unexpected value for min_grid_dist_x_idx, throw error
+            error("min_grid_dist_y_idx has value $min_grid_dist_y_idx. min_grid_dist_y_idx must have value 1, 2, 3 or 4.")
+        end
+
+        #Return great circle distance
+        return (great_circle_distance(lat1, lon1, lat2, lon2))::Float64
     end
-
-    #Get shortest vertical distance between cells A & B
-    #Ensure all distances are positive, use absolute value fn
-    cell_distances_y = abs.([cell_A_yMin - cell_B_yMin,  #cell_A.yVal_min - cell_B.yVal_min
-                            cell_A_yMin - cell_B_yMax,  #cell_A.yVal_min - cell_B.yVal_max
-                            cell_A_yMax - cell_B_yMin,  #cell_A.yVal_max - cell_B.yVal_min
-                            cell_A_yMax - cell_B_yMax])  #cell_A.yVal_max - cell_B.yVal_max
-
-    min_grid_dist_y_idx::Int64 = findmin(cell_distances_y)[2] #Second entry, index of the minimum over the given dimensions.
-
-    #Will take value 1, 2, 3 or 4. Throw error if another value
-    #Lookup table based on index value obtained
-    #Assign latitude coords
-    if min_grid_dist_y_idx == 1 #cell_A min, cell_B min
-        lat1 = cell_A_yMin
-        lat2 = cell_B_yMin
-    elseif min_grid_dist_y_idx == 2 #cell_A min, cell_B max
-        lat1 = cell_A_yMin
-        lat2 = cell_B_yMax
-    elseif min_grid_dist_y_idx == 3 #cell_A max, cell_B min
-        lat1 = cell_A_yMax
-        lat2 = cell_B_yMin
-    elseif min_grid_dist_y_idx == 4 #cell_A max, cell_B max
-        lat1 = cell_A_yMax
-        lat2 = cell_B_yMax
-    else #Unexpected value for min_grid_dist_x_idx, throw error
-        error("min_grid_dist_y_idx has value $min_grid_dist_y_idx. min_grid_dist_y_idx must have value 1, 2, 3 or 4.")
-    end
-
-    #Return great circle distance
-    return (great_circle_distance(lat1, lon1, lat2, lon2))::Float64
-
 end
 
 
