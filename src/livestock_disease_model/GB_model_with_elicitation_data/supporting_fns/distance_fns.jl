@@ -207,7 +207,7 @@ function sq_distance_between_cells(cell_A_xMin::Float64, cell_A_xMax::Float64,
                             cell_A_xMax - cell_B_xMin,  #cell_A.xVal_max - cell_B.xVal_min
                             cell_A_xMax - cell_B_xMax])  #cell_A.xVal_max - cell_B.xVal_max
 
-        delta_x::Float64 = minimum(distances_x)
+        delta_x = minimum(distances_x)
 
         #Get shortest vertical distance between cells A & B
         #Ensure all distances are positive, use absolute value fn
@@ -216,7 +216,7 @@ function sq_distance_between_cells(cell_A_xMin::Float64, cell_A_xMax::Float64,
                             cell_A_yMax - cell_B_yMin,  #cell_A.yVal_max - cell_B.yVal_min
                             cell_A_yMax - cell_B_yMax])  #cell_A.yVal_max - cell_B.yVal_max
 
-        delta_y::Float64 = minimum(distances_y)
+        delta_y = minimum(distances_y)
 
         return (delta_x*delta_x + delta_y*delta_y)::Float64
     end
@@ -419,7 +419,7 @@ function great_circle_distance_between_cells(cell_A_xMin::Float64, cell_A_xMax::
         end
 
         #Get latitude midpoint of smaller grid cell
-        if ( ((cell_A_yMin >= cell_B_yMin) && (cell_A_yMax <= cell_B_yMax)) 
+        if ((cell_A_yMin >= cell_B_yMin) && (cell_A_yMax <= cell_B_yMax)) 
             #Cell A is vertically within top and bottom boundaries of cell B
             lat1 = (cell_A_yMin + cell_A_yMax)/2
             lat2 = (cell_A_yMin + cell_A_yMax)/2
@@ -463,7 +463,7 @@ function great_circle_distance_between_cells(cell_A_xMin::Float64, cell_A_xMax::
         end
 
         #Get longitude midpoint of smaller grid cell
-        if ( ((cell_A_xMin >= cell_B_xMin) && (cell_A_xMax <= cell_B_xMax)) 
+        if ((cell_A_xMin >= cell_B_xMin) && (cell_A_xMax <= cell_B_xMax)) 
             #Cell A is horizontally within left and right boundaries of cell B
             lon1 = (cell_A_xMin + cell_A_xMax)/2
             lon2 = (cell_A_xMin + cell_A_xMax)/2
