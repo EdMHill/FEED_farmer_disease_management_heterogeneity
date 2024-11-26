@@ -64,7 +64,7 @@ county_UA_polygons = Shapefile.shapes(shapefile_table)
 n_counties_UAs = length(county_UA_polygons)
 
 #====================================================
-INTERVIEW DATA: HERD SIZE & BEHAVIOURAL CLUSTER GROUPED BAR PLOT (FIGURE YYY)
+INTERVIEW DATA: HERD SIZE & BEHAVIOURAL CLUSTER GROUPED BAR PLOT (FIGURE 2)
 ====================================================#
 
 # Set up the data array
@@ -172,7 +172,7 @@ n_holdings = 59774
 percentage_infected_holdings_results_array = 100. .*(total_infected_holdings_results_array./n_holdings)
 
 #========================
-VIOLIN PLOTS
+VIOLIN PLOTS (Figure 5)
 ========================#
 
 # Load intervention unit threshold cost data
@@ -268,7 +268,7 @@ end
 #========================
 OUTBREAK THRESHOLD STATISTICS
 GROUPED BAR PLOTS: Aggregating data over all seed infection locations
-(Figure ZZZ)
+(Figure 5)
 ========================#
 
 ### Set shared plotting variables ###
@@ -446,8 +446,7 @@ end
 
 #========================
 SPATIAL MAPS BY SEED INFECTION LOCATION
-INFECTION & OUTBREAK DURATION
-(FIGURES YYY)
+INFECTION & OUTBREAK DURATION (Supplementary figures)
 ========================#
 
 # To outbreak size and duration result arrays, add a zero slice to correspond
@@ -519,8 +518,7 @@ map_result_array_slice_to_plot_order = [1;2;3;8;4;5;6;7]
 
 #========================
 SPATIAL MAPS BY SEED INFECTION LOCATION
-THRESHOLD COST PER UNIT INTERVENTION
-(Plot title: Configuration)
+THRESHOLD COST PER UNIT INTERVENTION (Supplementary figures)
 ========================#
 
 # Load intervention unit threshold cost data
