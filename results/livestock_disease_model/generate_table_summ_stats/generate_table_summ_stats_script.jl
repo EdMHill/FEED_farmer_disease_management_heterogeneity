@@ -40,7 +40,7 @@ total_infected_holdings_results_array = zeros(Int64,n_simn_replicates,n_seed_reg
 outbreak_duration_results_array = zeros(Int64,n_simn_replicates,n_seed_region_scenarios,n_behav_group_configs_simulated)
 
 # Specify values for batch_ID_offset
-batch_ID_offset_vec = [2000;4100;4200;4300;4400;4500;4600]
+batch_ID_offset_vec = [5000;5100;5200;5300;5400;5500;5600]
 
 # Iterate over behavioural group configs & specified batch IDs.
 for behav_config_idx = 1:n_behav_group_configs_simulated
