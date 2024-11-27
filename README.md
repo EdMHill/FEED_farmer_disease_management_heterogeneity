@@ -3,9 +3,15 @@
 This repository contains files for the analysis presented in the scientific paper "Incorporating heterogeneity in farmer disease control behaviour into a livestock disease transmission model" by Edward M. Hill, Naomi S. Prosser, Paul Brown, Eamonn Ferguson, Jasmeet Kaler, Martin J. Green, Matt J. Keeling and Michael J. Tildesley.
 
 Zenodo DOI for the repository:
-[![DOI](https://zenodo.org/badge/584841376.svg)](https://zenodo.org/badge/latestdoi/584841376)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14229548.svg)](https://doi.org/10.5281/zenodo.14229548)
 
 Publication details: EM Hill, NS Prosser, P Brown, E Ferguson, MJ Green, J Kaler, MJ Keeling, MJ Tildesley. (2023) Incorporating heterogeneity in farmer disease control behaviour into a livestock disease transmission model. *Preventive Veterinary Medicine*. 219: 106019. doi: 10.1016/j.prevetmed.2023.106019. URL: https://doi.org/10.1016/j.prevetmed.2023.106019.
+
+## Corrections to the publication 
+Within the livestock disease model code there was a bug identified with the cell-to-cell distance calculation.
+Rerunning the analysis with the amended cell-to-cell distance calculation, there was no change in the qualitative findings. There were marginal changes to the quantitative results. Updated versions of the main manuscript and supporting information are available. 
+ - **Main manuscript**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2024-11-27-manuscript_corrections/2024-11-27-main_manuscript_corrections.pdf
+ - **Supporting information**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2024-11-27-manuscript_corrections/2024-11-27-supporting_information_corrections.pdf
 
 ## Livestock disease model 
 
