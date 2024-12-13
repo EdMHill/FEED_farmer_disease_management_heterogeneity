@@ -13,7 +13,7 @@ Rerunning the analysis with the amended cell-to-cell distance calculation, there
  - **Main manuscript**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2024-11-27-manuscript_corrections/2024-11-27-main_manuscript_corrections.pdf
  - **Supporting information**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2024-11-27-manuscript_corrections/2024-11-27-supporting_information_corrections.pdf
 
- A correction has also been published by *Preventive Veterinary Medicine*: https://doi.org/10.1016/j.prevetmed.2024.106408.
+ A correction has also been published by *Preventive Veterinary Medicine*: [https://doi.org/10.1016/j.prevetmed.2024.106408](https://doi.org/10.1016/j.prevetmed.2024.106408){:target="_blank"}.
 
 ## Livestock disease model 
 
