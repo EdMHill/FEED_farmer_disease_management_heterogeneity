@@ -265,7 +265,7 @@ function  adaptive_grid_construct_fn(avg_node_per_grid_target::Float64,
             #Calculate new and original variance from the target value
             parent_var = parent_cell_closeness[ii] #Parent cell term
             child_var = (sum((log.(node_per_child_vec[child_with_nodes_logic_vec]) .- log(avg_node_per_grid_target)).^2))/child_with_node_num #Child cell term
-            if  child_var < parent_var
+            if  child_var <= parent_var
                 #Accepted, move forward with subdivide retained
                 #Only keep those gird cells containing nodes
                 current_cell_grid_next_gen = child_cell_limits[child_with_nodes_logic_vec,:]
