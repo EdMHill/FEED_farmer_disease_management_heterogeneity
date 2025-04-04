@@ -647,16 +647,24 @@ function conditional_subsample_alg!(rng::AbstractRNG,
     #Instead, use a previously set up number of generators for all combinations of range of fixed probabilities
     #P_CS = {1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2, 0.1, 1.0e-2, 1.0e-3, 1.0e-4, 1.0e-5, 1.0e-6, 1.0e-7, 1.0e-8, 5.0e-9}
     #Note: SET UP P_CS IN ASCENDING ORDER!
-    rounded_p_over_idx = searchsortedlast(P_CS,cumulative_p_over)
+    binomial_RNG_array_col_p_over_idx = searchsortedlast(P_CS,cumulative_p_over)
 
-    if rounded_p_over_idx == length(P_CS)
-        rounded_p_over_idx = rounded_p_over_idx - 1
+    # Get index to relevant overestimated probability value from P_CS vector
+    # Required index corresponds to first '0' index in searchsortedlast(P_CS,cumulative_p_over)
+    #      - Can be obtained by taking next entry after binomial_RNG_array_col_p_over_idx (i.e. binomial_RNG_array_col_p_over_idx + 1)
+    rounded_P_CS_idx = binomial_RNG_array_col_p_over_idx + 1
+
+    # Assign overestimated probability that one farm becomes infected by any of the infectious nodes in index infected cell
+    overestimate_cumulative_p_over = P_CS[rounded_P_CS_idx]
+
+    # If probability is 1.0, binomial_RNG_array_col_p_over_idx value is one larger than number of columns in binomial_RNG_array
+    # Decrement binomial_RNG_array_col_p_over_idx value so will access the final column of binomial_RNG_array (that holds binomial RNG with probability of success per trial of 1)
+    if binomial_RNG_array_col_p_over_idx == length(P_CS)
+        binomial_RNG_array_col_p_over_idx = binomial_RNG_array_col_p_over_idx- 1
     end
 
-    #println("rounded_p_over_idx: $rounded_p_over_idx")
-
     #Draw the number of nodes that would get infected using the cumulative p_over.
-    n_over::Int64 = rand(rng,binomial_RNG_array[n_suscept,rounded_p_over_idx])  #rand(Binomial(n_suscept, rounded_p_over))
+    n_over::Int64 = rand(rng,binomial_RNG_array[n_suscept,binomial_RNG_array_col_p_over_idx])
 
     #If nodes would have been infected using p_over, check if infected using actual transmission rate
     if (n_over > 0)
@@ -682,7 +690,7 @@ function conditional_subsample_alg!(rng::AbstractRNG,
                                                                         selected_sus_node_ID)
 
             #Event-driven stochastic event. If infection occurs, update node status
-            if  (rand(rng) <= (cumulative_p / cumulative_p_over))
+            if  (rand(rng) <= (cumulative_p / overestimate_cumulative_p_over))
 
                 #SelectedSusNode is infected. Signify infection event on become_exposed_flag indivator vector
                 holding_vectors_and_arrays_params.holding_has_had_infection_flag[selected_sus_node_ID] = 1 #Index retreived from nodeID field
