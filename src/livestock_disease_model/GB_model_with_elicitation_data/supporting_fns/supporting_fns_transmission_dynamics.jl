@@ -649,6 +649,12 @@ function conditional_subsample_alg!(rng::AbstractRNG,
     #Note: SET UP P_CS IN ASCENDING ORDER!
     binomial_RNG_array_col_p_over_idx = searchsortedlast(P_CS,cumulative_p_over)
 
+    # If probability is 1.0, binomial_RNG_array_col_p_over_idx value is one larger than number of columns in binomial_RNG_array
+    # Decrement binomial_RNG_array_col_p_over_idx value so will access the final column of binomial_RNG_array (that holds binomial RNG with probability of success per trial of 1)
+    if binomial_RNG_array_col_p_over_idx == length(P_CS)
+        binomial_RNG_array_col_p_over_idx = binomial_RNG_array_col_p_over_idx - 1
+    end
+
     # Get index to relevant overestimated probability value from P_CS vector
     # Required index corresponds to first '0' index in searchsortedlast(P_CS,cumulative_p_over)
     #      - Can be obtained by taking next entry after binomial_RNG_array_col_p_over_idx (i.e. binomial_RNG_array_col_p_over_idx + 1)
@@ -657,11 +663,6 @@ function conditional_subsample_alg!(rng::AbstractRNG,
     # Assign overestimated probability that one farm becomes infected by any of the infectious nodes in index infected cell
     overestimate_cumulative_p_over = P_CS[rounded_P_CS_idx]
 
-    # If probability is 1.0, binomial_RNG_array_col_p_over_idx value is one larger than number of columns in binomial_RNG_array
-    # Decrement binomial_RNG_array_col_p_over_idx value so will access the final column of binomial_RNG_array (that holds binomial RNG with probability of success per trial of 1)
-    if binomial_RNG_array_col_p_over_idx == length(P_CS)
-        binomial_RNG_array_col_p_over_idx = binomial_RNG_array_col_p_over_idx- 1
-    end
 
     #Draw the number of nodes that would get infected using the cumulative p_over.
     n_over::Int64 = rand(rng,binomial_RNG_array[n_suscept,binomial_RNG_array_col_p_over_idx])
