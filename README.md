@@ -2,9 +2,6 @@
 
 This repository contains files for the analysis presented in the scientific paper "Incorporating heterogeneity in farmer disease control behaviour into a livestock disease transmission model" by Edward M. Hill, Naomi S. Prosser, Paul Brown, Eamonn Ferguson, Jasmeet Kaler, Martin J. Green, Matt J. Keeling and Michael J. Tildesley.
 
-Zenodo DOI for the repository:
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14229548.svg)](https://doi.org/10.5281/zenodo.14229548)
-
 Publication details: EM Hill, NS Prosser, P Brown, E Ferguson, MJ Green, J Kaler, MJ Keeling, MJ Tildesley. (2023) Incorporating heterogeneity in farmer disease control behaviour into a livestock disease transmission model. *Preventive Veterinary Medicine*. 219: 106019. doi: 10.1016/j.prevetmed.2023.106019. URL: https://doi.org/10.1016/j.prevetmed.2023.106019.
 
 ## Corrections to the publication 
@@ -18,10 +15,16 @@ Rerunning the analysis with the amended cell-to-cell distance calculation, there
 
  A correction has also been published by *Preventive Veterinary Medicine*: https://doi.org/10.1016/j.prevetmed.2024.106408.
 
+ Zenodo DOI for the code release associated with this version of the manuscript:
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.14229548.svg)](https://doi.org/10.5281/zenodo.14229548)
+
  ### 06 April 2025
 Within the livestock disease model code there there was an implementation error in the conditional subsampling algorithm used to model the spatial transmission of infection. Rerunning the analysis with the amended code, our previous qualitative conclusions are unchanged. There were changes to the quantitative results, mainly a reduction in the outbreak sizes. Updated versions of the main manuscript and supporting information are available. 
  - **Main manuscript**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2025-04-06-manuscript_corrections/2025-04-06-main_manuscript_corrections.pdf
  - **Supporting information**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2025-04-06-manuscript_corrections/2025-04-06-supporting_information_corrections.pdf
+
+ Zenodo DOI for the code release associated with this version of the manuscript:
+[![DOI](https://zenodo.org/badge/584841376.svg)](https://doi.org/10.5281/zenodo.7620689)
 
 ## Livestock disease model 
 
