@@ -8,12 +8,20 @@ Zenodo DOI for the repository:
 Publication details: EM Hill, NS Prosser, P Brown, E Ferguson, MJ Green, J Kaler, MJ Keeling, MJ Tildesley. (2023) Incorporating heterogeneity in farmer disease control behaviour into a livestock disease transmission model. *Preventive Veterinary Medicine*. 219: 106019. doi: 10.1016/j.prevetmed.2023.106019. URL: https://doi.org/10.1016/j.prevetmed.2023.106019.
 
 ## Corrections to the publication 
+
+### 27 November 2024
+
 Within the livestock disease model code there was a bug identified with the cell-to-cell distance calculation.
 Rerunning the analysis with the amended cell-to-cell distance calculation, there was no change in the qualitative findings. There were marginal changes to the quantitative results. Updated versions of the main manuscript and supporting information are available. 
  - **Main manuscript**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2024-11-27-manuscript_corrections/2024-11-27-main_manuscript_corrections.pdf
  - **Supporting information**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2024-11-27-manuscript_corrections/2024-11-27-supporting_information_corrections.pdf
 
  A correction has also been published by *Preventive Veterinary Medicine*: https://doi.org/10.1016/j.prevetmed.2024.106408.
+
+ ### 06 April 2025
+Within the livestock disease model code there there was an implementation error in the conditional subsampling algorithm used to model the spatial transmission of infection. Rerunning the analysis with the amended code, our previous qualitative conclusions are unchanged. There were changes to the quantitative results, mainly a reduction in the outbreak sizes. Updated versions of the main manuscript and supporting information are available. 
+ - **Main manuscript**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2025-04-06-manuscript_corrections/2025-04-06-main_manuscript_corrections.pdf
+ - **Supporting information**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2025-04-06-manuscript_corrections/2025-04-06-supporting_information_corrections.pdf
 
 ## Livestock disease model 
 
