@@ -240,10 +240,10 @@ y_lim_max_val = [6.1e4;
                  4.]
 
 # Set up save filenames
-violin_plot_save_filename_vec = ["violin_plots/500_replicate_runs/total_infected_violin_plot";
-                                "violin_plots/500_replicate_runs/percentage_infected_violin_plot";
-                                "violin_plots/500_replicate_runs/outbreak_duration_violin_plot";
-                                "violin_plots/500_replicate_runs/threshold_intervention_cost_violin_plot"]
+violin_plot_save_filename_vec = ["violin_plots/500_replicate_runs/total_infected_violin_plot_06Apr2025";
+                                "violin_plots/500_replicate_runs/percentage_infected_violin_plot_06Apr2025";
+                                "violin_plots/500_replicate_runs/outbreak_duration_violin_plot_06Apr2025";
+                                "violin_plots/500_replicate_runs/threshold_intervention_cost_violin_plot_06Apr2025s"]
 
 # Specify the quantile values to be computed for this analysis
 uncertainty_interval_quantile_vals = [0.025, 0.975]
@@ -312,7 +312,7 @@ bar_colour_scheme_size = palette(:Blues_3,3)
 bar_fillcolor_threshold_outbreak_size = [bar_colour_scheme_size[1] bar_colour_scheme_size[2] bar_colour_scheme_size[3]]
 
 # Specify the save filename
-threshold_outbreak_size_bar_plot_save_filename = "bar_plots/500_replicate_runs/threshold_outbreak_percentage_bar_plot"
+threshold_outbreak_size_bar_plot_save_filename = "bar_plots/500_replicate_runs/threshold_outbreak_percentage_bar_plot_06Apr2025"
 
 # Generate the grouped bar plot
 generate_threshold_grouped_bar_fig(reordered_percentage_infected_holdings_results_all_seed_locs,
@@ -348,7 +348,7 @@ bar_colour_scheme_duration = palette(:Reds_3,3)
 bar_fillcolor_threshold_outbreak_duration = [bar_colour_scheme_duration[1] bar_colour_scheme_duration[2] bar_colour_scheme_duration[3]]
 
 # Specify the save filename
-threshold_outbreak_duration_bar_plot_save_filename = "bar_plots/500_replicate_runs/threshold_outbreak_duration_bar_plot"
+threshold_outbreak_duration_bar_plot_save_filename = "bar_plots/500_replicate_runs/threshold_outbreak_duration_bar_plot_06Apr2025"
 
 # Generate the grouped bar plot
 generate_threshold_grouped_bar_fig(reordered_outbreak_duration_results_all_seed_locs,
@@ -383,7 +383,7 @@ bar_colour_scheme_intervention_cost = palette(:Purples_3,3)
 bar_fillcolor_threshold_intervention_cost = [bar_colour_scheme_intervention_cost[1] bar_colour_scheme_intervention_cost[2] bar_colour_scheme_intervention_cost[3]]
 
 # Specify the save filename
-threshold_intervention_cost_bar_plot_save_filename = "bar_plots/500_replicate_runs/threshold_intervention_cost_bar_plot"
+threshold_intervention_cost_bar_plot_save_filename = "bar_plots/500_replicate_runs/threshold_intervention_cost_bar_plot_06Apr2025"
 
 # Generate the grouped bar plot
 generate_threshold_grouped_bar_fig(reordered_intervention_unit_threshold_cost_results_all_seed_locs,
@@ -476,7 +476,7 @@ map_result_array_slice_to_plot_order = [1;2;3;8;4;5;6;7]
  percentage_infected_holdings_cmap = :Blues
  percentage_infected_holdings_clim_vals = (0.,100.)
  percentage_infected_holdings_colorbar_string = "  \nHoldings infected (%)"
- percentage_infected_holdings_save_filename_prefix = "seed_region_spatial_maps/500_replicate_runs/plot_title_behav_config/percentage_outbreak_size/holding_percentage_outbreak_size_seed_region_spatial_map_behav"
+ percentage_infected_holdings_save_filename_prefix = "seed_region_spatial_maps/2025-04-06/plot_title_behav_config/percentage_outbreak_size/holding_percentage_outbreak_size_seed_region_spatial_map_behav"
  plot_spatial_map_fn(percentage_infected_holdings_results_incl_no_outbreak[:,:,map_result_array_slice_to_plot_order],
                    quantile_vals_spatial_maps,
                    n_quantile_vals,
@@ -498,7 +498,7 @@ map_result_array_slice_to_plot_order = [1;2;3;8;4;5;6;7]
  outbreak_duration_cmap = :Reds
  outbreak_duration_clim_vals = (0.,500.)
  outbreak_duration_colorbar_string = "  \nOutbreak duration (days)"
- outbreak_duration_save_filename_prefix = "seed_region_spatial_maps/500_replicate_runs/plot_title_behav_config/outbreak_duration/outbreak_duration_seed_region_spatial_map_behav"
+ outbreak_duration_save_filename_prefix = "seed_region_spatial_maps/2025-04-06/plot_title_behav_config/outbreak_duration/outbreak_duration_seed_region_spatial_map_behav"
  plot_spatial_map_fn(outbreak_duration_results_temp_incl_no_outbreak[:,:,map_result_array_slice_to_plot_order],
                 quantile_vals_spatial_maps,
                 n_quantile_vals,
@@ -534,7 +534,7 @@ intervention_unit_threshold_cost_clim_vals = (0.,2.)
 intervention_unit_threshold_cost_colorbar_string = "  \nVaccine dose threshold cost"
 
 # Call plot function (behavioural configuration as titles)
-intervention_unit_threshold_cost_behav_config_plot_title_save_filename_prefix = "seed_region_spatial_maps/500_replicate_runs/plot_title_behav_config/intervention_unit_threshold_cost/intervention_unit_threshold_cost_seed_region_spatial_map_behav"
+intervention_unit_threshold_cost_behav_config_plot_title_save_filename_prefix = "seed_region_spatial_maps/2025-04-06/plot_title_behav_config/intervention_unit_threshold_cost/intervention_unit_threshold_cost_seed_region_spatial_map_behav"
 plot_spatial_map_fn(intervention_unit_threshold_cost_array[:,:,map_result_array_slice_to_plot_order],
                quantile_vals_spatial_maps,
                n_quantile_vals,
@@ -611,7 +611,7 @@ colourbar_string_prefix_outbreak_threshold_size = "\nInfected holdings"
 colourbar_string_suffix_outbreak_threshold_size = "%"
 
 # Generate the spatial maps
-outbreaks_within_threshold_size_save_filename_prefix = "seed_region_spatial_maps/500_replicate_runs/plot_title_behav_config/threshold_outbreak_size/threshold_outbreak_size_empirical_estimates/threshold_outbreak_size_seed_region_spatial_map_behav"
+outbreaks_within_threshold_size_save_filename_prefix = "seed_region_spatial_maps/2025-04-06/plot_title_behav_config/threshold_outbreak_size/threshold_outbreak_size_empirical_estimates/threshold_outbreak_size_seed_region_spatial_map_behav"
 plot_outbreak_threshold_spatial_map_fn(propn_outbreaks_size_above_threshold,
                                            outbreak_threshold_size,
                                            n_outbreak_threshold_sizes,
@@ -658,7 +658,7 @@ colourbar_string_prefix_outbreak_threshold_duration = "\nOutbreak duration"
 colourbar_string_suffix_outbreak_threshold_duration = " days"
 
 # Generate the spatial maps
-outbreaks_within_threshold_duration_save_filename_prefix = "seed_region_spatial_maps/500_replicate_runs/plot_title_behav_config/threshold_outbreak_duration/threshold_outbreak_duration_empirical_estimates/threshold_outbreak_duration_seed_region_spatial_map_behav"
+outbreaks_within_threshold_duration_save_filename_prefix = "seed_region_spatial_maps/2025-04-06/plot_title_behav_config/threshold_outbreak_duration/threshold_outbreak_duration_empirical_estimates/threshold_outbreak_duration_seed_region_spatial_map_behav"
 plot_outbreak_threshold_spatial_map_fn(propn_outbreaks_above_duration_threshold,
                                            outbreak_threshold_duration,
                                            n_outbreak_threshold_durations,
@@ -705,7 +705,7 @@ colourbar_string_prefix_outbreak_threshold_intervention_cost = "\nThreshold vacc
 colourbar_string_suffix_outbreak_threshold_intervention_cost = ""
 
 # Generate the spatial maps
-outbreaks_within_threshold_intervention_cost_save_filename_prefix = "seed_region_spatial_maps/500_replicate_runs/plot_title_behav_config/threshold_intervention_cost/threshold_intervention_cost_empirical_estimates/threshold_intervention_cost_seed_region_spatial_map_behav"
+outbreaks_within_threshold_intervention_cost_save_filename_prefix = "seed_region_spatial_maps/2025-04-06/plot_title_behav_config/threshold_intervention_cost/threshold_intervention_cost_empirical_estimates/threshold_intervention_cost_seed_region_spatial_map_behav"
 plot_outbreak_threshold_spatial_map_fn(propn_outbreaks_above_intervention_cost_threshold,
                                            intervention_unit_cost_threshold_vec,
                                            n_outbreak_threshold_intervention_cost,
