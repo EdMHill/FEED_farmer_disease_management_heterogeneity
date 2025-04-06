@@ -40,7 +40,7 @@ total_infected_holdings_results_array = zeros(Int64,n_simn_replicates,n_seed_reg
 outbreak_duration_results_array = zeros(Int64,n_simn_replicates,n_seed_region_scenarios,n_behav_group_configs_simulated)
 
 # Specify values for batch_ID_offset
-batch_ID_offset_vec = [5000;5100;5200;5300;5400;5500;5600]
+batch_ID_offset_vec = [6000;6100;6200;6300;6400;6500;6600]
 
 # Iterate over behavioural group configs & specified batch IDs.
 for behav_config_idx = 1:n_behav_group_configs_simulated
@@ -68,7 +68,7 @@ REORDER DATA TO MATCH POSITIONING OF BEHAVIOURAL CONFIGS IN THE FIGURES
 ========================#
 
 # Load intervention unit threshold cost data
-intervention_unit_threshold_cost_array = load("../generate_figures/JLD2_files/cost_related_statistics.jld2", "intervention_unit_threshold_cost_array")
+intervention_unit_threshold_cost_array = load("../generate_figures/JLD2_files/cost_related_statistics_06Apr2025.jld2", "intervention_unit_threshold_cost_array")
 
 # Replace NaN values with zeros (for the baseline scenario)
 intervention_unit_threshold_cost_array[:,:,1] = zeros(Float64,n_simn_replicates,n_seed_region_scenarios)
@@ -143,7 +143,7 @@ OUTBREAK THRESHOLD STATISTICS
 total_simns_per_behav_config = n_simn_replicates*n_seed_region_scenarios
 
 ### Set threshold values to assess ###
-outbreak_threshold_size_vec = [1;10;20]
+outbreak_threshold_size_vec = [1;5;10]
 outbreak_threshold_durations_vec = [30;100;180]
 intervention_unit_cost_threshold_vec = [0.5;1;2]
 
@@ -166,12 +166,12 @@ for behav_config_idx = 1:n_behav_group_configs_total
     end
 
     # Outbreak duration threshold check
-    for duration_threshold_val_itr = 1:length(outbreak_threshold_size_vec)
+    for duration_threshold_val_itr = 1:length(outbreak_threshold_durations_vec)
         threshold_outbreak_duration_results[duration_threshold_val_itr,behav_config_idx] = ( sum(current_behav_config_itr_outbreak_duration_results_all_seed_locs .> outbreak_threshold_durations_vec[duration_threshold_val_itr])*100 ) / total_simns_per_behav_config
     end
 
     # Intervention unit cost threshold check
-    for cost_threshold_val_itr = 1:length(outbreak_threshold_size_vec)
+    for cost_threshold_val_itr = 1:length(intervention_unit_cost_threshold_vec)
         threshold_intervention_cost_results[cost_threshold_val_itr,behav_config_idx] = ( sum(current_behav_config_itr_intervention_unit_threshold_cost_results_all_seed_locs .> intervention_unit_cost_threshold_vec[cost_threshold_val_itr])*100 ) / total_simns_per_behav_config
     end
 end

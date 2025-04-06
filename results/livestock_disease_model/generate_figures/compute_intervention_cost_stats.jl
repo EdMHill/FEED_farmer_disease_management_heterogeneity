@@ -32,7 +32,7 @@ n_replicates = 500
 n_behav_group_configs = 8
 
 # Specify batch ID offset value for each configuration
-batch_ID_offset_vec = [5000;5100;5200;5300;5400;5500;5600]
+batch_ID_offset_vec = [6000;6100;6200;6300;6400;6500;6600]
 
 # Set up arrays to store imported data
 infected_count_array = zeros(Int64,n_replicates,n_seed_region_scenarios,n_behav_group_configs)
@@ -138,5 +138,5 @@ percentage_simns_cost_effective_array = dropdims(propn_simns_cost_effective_arra
 SAVE ARRAYS TO FILE
 ========================#
 # Save config details to JLD 2 file
-jldsave("JLD2_files/cost_related_statistics.jld2";
+jldsave("JLD2_files/cost_related_statistics_06Apr2025.jld2";
         intervention_unit_threshold_cost_array)

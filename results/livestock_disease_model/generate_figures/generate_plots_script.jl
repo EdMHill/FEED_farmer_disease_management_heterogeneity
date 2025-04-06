@@ -148,7 +148,7 @@ outbreak_duration_results_array = zeros(Int64,n_simn_replicates,n_seed_region_sc
 # batch_baseline_val = 2000
 
 # Specify values for batch_ID_offset
-batch_ID_offset_vec = [2000;4100;4200;4300;4400;4500;4600]
+batch_ID_offset_vec = [6000;6100;6200;6300;6400;6500;6600]
 
 # Iterate over behavioural group configs & specified batch IDs.
 for behav_config_idx = 1:n_behav_group_configs
@@ -176,7 +176,7 @@ VIOLIN PLOTS (Figure 5)
 ========================#
 
 # Load intervention unit threshold cost data
-intervention_unit_threshold_cost_array = load("JLD2_files/cost_related_statistics.jld2", "intervention_unit_threshold_cost_array")
+intervention_unit_threshold_cost_array = load("JLD2_files/cost_related_statistics_06Apr2025.jld2", "intervention_unit_threshold_cost_array")
 
 # Replace NaN values with zeros
 intervention_unit_threshold_cost_array[:,:,1] = zeros(Float64,n_simn_replicates,n_seed_region_scenarios)
@@ -295,7 +295,7 @@ x_tick_vals = [1;3:1:5;7:1:8;10:1:11]
 ### Outbreak size (percentage) ###
 
 # Set threshold values to assess
-outbreak_threshold_size_vec = [1;10;20]
+outbreak_threshold_size_vec = [1;5;10]
 
 # Map from result arrays slices to the specified configuration order
 reordered_percentage_infected_holdings_results_all_seed_locs = total_infected_holdings_results_all_seed_locs[:,map_result_array_slice_to_plot_order].*(100/n_holdings)
@@ -305,7 +305,7 @@ yaxis_label_threshold_outbreak_size = "% holdings infected > X (% of simns) "
 
 # Legend input values
 legend_position_vals_threshold_outbreak_size = (0.86,0.92)
-legend_labels_threshold_outbreak_size = ["X = 1%" "X = 10%" "X = 20%"]
+legend_labels_threshold_outbreak_size = ["X = 1%" "X = 5%" "X = 10%"]
 
 # Set up plot bar colours
 bar_colour_scheme_size = palette(:Blues_3,3)
@@ -522,7 +522,7 @@ THRESHOLD COST PER UNIT INTERVENTION (Supplementary figures)
 ========================#
 
 # Load intervention unit threshold cost data
-intervention_unit_threshold_cost_array = load("JLD2_files/cost_related_statistics.jld2", "intervention_unit_threshold_cost_array")
+intervention_unit_threshold_cost_array = load("JLD2_files/cost_related_statistics_06Apr2025.jld2", "intervention_unit_threshold_cost_array")
 
 # Replace NaN values with zeros
 intervention_unit_threshold_cost_array[:,:,1] = zeros(Float64,n_simn_replicates,n_seed_region_scenarios)
@@ -586,7 +586,7 @@ plot_config_title_vec = ["Uncooperative";
 ### Outbreak size (percentage) ###
 
 # Set outbreak threshold sizes
-outbreak_threshold_size = [1;10;20]
+outbreak_threshold_size = [1;5;10]
 n_outbreak_threshold_sizes = length(outbreak_threshold_size)
 
 # Mapping from result arrays slices to above configuration order
