@@ -24,7 +24,7 @@ Within the livestock disease model code there there was an implementation error 
  - **Supporting information**: https://github.com/EdMHill/FEED_farmer_disease_management_heterogeneity/blob/main/docs/2025-04-06-manuscript_corrections/2025-04-06-supporting_information_corrections.pdf
 
  Zenodo DOI for the code release associated with this version of the manuscript:
-[![DOI](https://zenodo.org/badge/584841376.svg)](https://doi.org/10.5281/zenodo.7620689)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.15164463.svg)](https://doi.org/10.5281/zenodo.15164463)
 
 ## Livestock disease model 
 
